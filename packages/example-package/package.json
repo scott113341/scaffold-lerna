@@ -1,0 +1,29 @@
+{
+  "name": "{% name %}-example",
+  "version": "0.0.0",
+  "description": "{% description %}",
+  "author": "{% author %}",
+  "license": "MIT",
+  "repository": "git@github.com:{% owner %}/{% name %}.git",
+  "homepage": "https://github.com/{% owner %}/{% name %}",
+  "bugs": "https://github.com/{% owner %}/{% name %}/issues",
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],{% bin? %}
+  "bin": {
+    "{% name %}": "lib/index.js"
+  },{% end %}{% public? %}{% else %}
+  "private": true,{% end %}
+  "scripts": {
+    "build": "shx rm -rf lib/ && shx mkdir lib/ && babel --copy-files --out-dir lib/ src/",
+    "test": "npm run build && node lib/test/index.js",
+    "test:ci": "node lib/test/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "shx": "^0.1.4",
+    "tape": "^4.6.0"
+  }
+}

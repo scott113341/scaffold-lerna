@@ -1,0 +1,36 @@
+{
+  "name": "{% name %}-monorepo",
+  "version": "0.0.0",
+  "description": "{% description %}",
+  "author": "{% author %}",
+  "license": "MIT",
+  "repository": "git@github.com:{% owner %}/{% name %}.git",
+  "homepage": "https://github.com/{% owner %}/{% name %}",
+  "bugs": "https://github.com/{% owner %}/{% name %}/issues",
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],{% bin? %}
+  "bin": {
+    "{% name %}": "lib/index.js"
+  },{% end %}{% public? %}{% else %}
+  "private": true,{% end %}
+  "scripts": {
+    "bootstrap": "lerna clean && lerna bootstrap && lerna run build",
+    "lint": "semistandard --fix",
+    "test": "lerna run test",
+    "test:ci": "lerna run test:ci && semistandard"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "lerna": "2.0.0-beta.30",
+    "semistandard": "^9.0.0"
+  },
+  "semistandard": {
+    "ignore": [
+      "lib/"
+    ]
+  }
+}
