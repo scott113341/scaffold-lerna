@@ -10,10 +10,7 @@
   "main": "lib/index.js",
   "files": [
     "lib/"
-  ],{% bin? %}
-  "bin": {
-    "{% name %}": "lib/index.js"
-  },{% end %}{% public? %}{% else %}
+  ],{% public? %}{% else %}
   "private": true,{% end %}
   "scripts": {
     "bootstrap": "lerna clean && lerna bootstrap && lerna run build",
